@@ -71,7 +71,6 @@ const updateUserRole = async (req, res, next) => {
       });
     }
     const user = await User.findById(req.user._id);
-    // Prevent admin from changing their own role (good security practice)
     if (req.params.id === req.user._id.toString()) {
       return res.status(400).json({
         success: false,
